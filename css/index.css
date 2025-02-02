@@ -1,0 +1,370 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+:root {
+  --main-color: #ffda2a;
+  --bg-color: #171717;
+  --main-text-color: rgb(255, 255, 255);
+}
+ul, ol, li {
+  list-style-type: none;}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: normal;
+}
+a:focus {
+  outline: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+}
+body{
+  background-color: black;
+}
+.Box-limiter{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.Box-wrapper{
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  transition: transform 1s ease;
+}
+
+.box{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+  
+}
+.Hero{
+  color: black; /* El color del texto puede ser cualquiera */
+  
+}
+.box-H1{
+  font-size: 7rem;
+  font-weight: 800;
+  z-index: 1;
+  font-family: "Playfair Display", serif;
+  text-shadow: 
+  1px 1px 0 white, 
+  -1px -1px 0 white, 
+  1px -1px 0 white, 
+  -1px 1px 0 white;
+}
+.box-P{
+  font-size: 40px;
+  font-weight: 300;
+  z-index: 1;
+  color: white;
+  font-family: "Poppins", serif;
+
+
+}
+
+.VideoWrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+.Video{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  mask-image: url('../assets/ezgif-20910a52b6bac.gif'); /* Para navegadores WebKit */
+            -webkit-mask-image: url('../assets/ezgif-20910a52b6bac.gif');
+            mask-size: cover;
+            -webkit-mask-size: cover;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-position: center;
+
+}
+.MiniVideoWrapper{
+  width: 400px;
+  height: 300px;
+  background-color: red;
+  position: absolute;
+}
+.MiniVideoWrapper--primero{
+  bottom: 0;
+  left: calc(50% - 200px);
+}
+.MiniVideo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%)
+}
+.MiniVideoWrapper--segundo{
+  top: 0;
+  left: 0;
+}
+.MiniVideoWrapper--tercero{
+  bottom: 0;
+  right: 0;
+}
+.MiniVideoWrapper--cuarto{
+  top: 0;
+  right: 0;
+}
+.box-top{
+  background-color: black;
+}
+.box-bottom{
+  background-color: whitesmoke;
+}
+.img-wrapper{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease;
+  z-index: 0;
+  
+}
+.img-wrapper--top{
+  background-color: #ffda2a;
+}
+.img-wrapper--bottom{
+background-color: gray;
+top: -100vh;
+}
+.Texto{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  font-size: 5rem;
+    font-weight: bold;
+    color: white; /* El color del texto puede ser cualquiera */
+    mix-blend-mode: difference; /* Aplica el modo de mezcla */
+    z-index: 1;
+    text-align: center;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+
+}
+.Texto span{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  padding-bottom: .55rem;
+
+}
+.Texto-top span{
+  color: blueviolet;
+}
+.Texto-bottom span{
+  color: #66D9D8;
+}
+
+.AboutUs{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  color: white;
+  padding: 0 2rem;
+
+}
+.AboutUs-h2{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 5rem;
+  grid-column: 1 / span 2;
+}
+.AboutUs-p{
+  font-family: "Poppins", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  grid-row: 2;
+  grid-column: 2;
+}
+.AboutUs-imgWrapper{
+  width: 500px;
+  min-height: 300px;
+  background-color: white;
+}
+.IntroServices{
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0 2rem;
+
+}
+.IntroServices-h2{
+  width: 100%;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 5rem;
+  color: white; /* El color del texto puede ser cualquiera */
+    mix-blend-mode: difference;
+    text-align: center;
+
+
+}
+.IntroServices::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(../assets/beautiful-outdoor-nature-landscape-with-alone-christmass-tree-snow-winter-weather-season.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  mask-image: url(../assets/image-from-rawpixel-id-15395508-png.png);
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+.IntroServices-p{
+  width: 50%;
+  
+  font-family: "Poppins", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: white; /* El color del texto puede ser cualquiera */
+  mix-blend-mode: difference;
+  text-align: center;
+}
+.Services{
+    color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+  padding: 0 2rem;
+}
+.Services-Infowrapper{
+  width: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: start;
+}
+.Services-Infowrapper p{
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 4rem;
+
+}
+.Services-h3{
+font-family: "Poppins", serif;
+font-size: 1.5rem;
+color: blueviolet;
+}
+
+.Services-sticky{
+  width: 50vw;
+  min-height: 400px;
+  position: fixed;
+  top: calc(50% - 150px);
+  left: 0;
+  z-index: 0;
+
+}
+.Services-imgWrapper{
+  color: white;
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  opacity: 0;
+  top: calc(50% - 150px);
+  left: calc(50% - 200px);
+  
+}
+.Services-vector{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  
+}
+.Services-vector--segundo{
+  padding-right: 20px;
+}
+.IsVisible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.Efecto{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+
+
+}
+.Efecto-marginWrapper{
+  width: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+
+
+  
+}
+.Efecto-margin--left{
+  align-items: start;
+}
+.Efecto-margin--right{
+  align-items: end;
+}
+.Efecto-margin{
+background-color: white;
+height: 50px;
+transition: all 2s ease;
+z-index: 2;
+}
+.Efecto-margin--primero{
+width: 25%;
+}
+.Efecto-margin--segundo{
+width: 50%;
+}
+.Efecto-margin--tercero{
+width: 75%;
+}
+.Efecto-margin--cuarto{
+width: 100%;
+}
+.IsInActive{
+width: 0;
+}

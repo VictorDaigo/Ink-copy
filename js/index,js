@@ -1,0 +1,152 @@
+const BoxWrapper = document.querySelector(`.Box-wrapper`);
+const imgWrapper = document.querySelectorAll(`.img-wrapper`);
+const imgWrappeBottom = document.querySelector(`.img-wrapper--bottom`);
+const box = document.querySelectorAll('.box')
+BoxWrapper.style.height = `calc(100% * ${box.length})`
+box.forEach((_,i)=>{
+  box[i].style.height = `calc(100% / ${box.length})`
+})
+let anchoBox = 100 / box.length
+let esScrolear = 0;
+let imgScroll = esScrolear - 1
+let mouseX = 0; // Guardar posición X del mouse
+let mouseY = 0; // Guardar posición Y del mouse
+
+// Dimensiones del imgWrapper (fijas según tu CSS)
+const imgWidth = 200; // Ancho del img-wrapper
+const imgHeight = 300; // Altura del img-wrapper
+
+// Evento `wheel`
+window.addEventListener(`wheel`, (e) => {
+    let { deltaY } = e;
+
+    if (deltaY > 0) {
+        esScrolear++;
+        if (esScrolear > box.length - 1) {
+            esScrolear = box.length - 1;
+        }
+
+        BoxWrapper.style.transform = `translateY(-${esScrolear * anchoBox}%)`;
+        imgWrapper.forEach((_, i) => {
+            // Aplicar solo la transformación del scroll
+            const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`; // Aplicar scroll
+            const mouseTransform = `translate(${mouseX - imgWidth / 2}px, ${mouseY - imgHeight / 2}px)`; // Mantener el efecto del mouse centrado
+            imgWrapper[i].style.transform = `${scrollTransform} ${mouseTransform}`;
+        });
+    } else if (deltaY < 0) {
+        esScrolear--;
+        if (esScrolear < 0) {
+            esScrolear = 0;
+        }
+
+        BoxWrapper.style.transform = `translateY(-${esScrolear * anchoBox}%)`;
+        imgWrapper.forEach((_, i) => {
+            // Aplicar solo la transformación del scroll
+            const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`; // Aplicar scroll
+            const mouseTransform = `translate(${mouseX - imgWidth / 2}px, ${mouseY - imgHeight / 2}px)`; // Mantener el efecto del mouse centrado
+            imgWrapper[i].style.transform = `${scrollTransform} ${mouseTransform}`;
+        });
+    }
+    console.log(esScrolear);
+});
+
+// Evento `mousemove`
+window.addEventListener('mousemove', (e) => {
+    let { clientX, clientY } = e;
+
+    mouseX = clientX; // Actualizar posición del mouse
+    mouseY = clientY;
+
+    imgWrapper.forEach((_, i) => {
+        // Mantener el desplazamiento del scroll
+        const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`; // Mantener scroll
+        const mouseTransform = `translate(${mouseX - imgWidth / 2}px, ${mouseY - imgHeight / 2}px)`; // Ajustar posición del mouse para centrar el div
+        imgWrapper[i].style.transform = `${scrollTransform} ${mouseTransform}`;
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const miniVideos = document.querySelectorAll(".MiniVideoWrapper");
+    let visibleVideos = [];
+    let index = 0;
+
+    // Ocultar todos al inicio
+    miniVideos.forEach(video => video.style.opacity = 0);
+
+    function updateVisibility() {
+        // Ocultar todos
+        miniVideos.forEach(video => video.style.opacity = 0);
+
+        // Mostrar los elementos en el array visibleVideos
+        visibleVideos.forEach(video => video.style.opacity = 1);
+    }
+
+    function toggleVideos() {
+        if (visibleVideos.length === 3) {
+            // Eliminar el primero en la lista
+            visibleVideos.shift();
+        }
+        
+        // Agregar el siguiente en la lista cíclicamente
+        visibleVideos.push(miniVideos[index]);
+        
+        // Actualizar visibilidad
+        updateVisibility();
+        
+        // Avanzar en el índice cíclicamente
+        index = (index + 1) % miniVideos.length;
+    }
+
+    // Iniciar con un intervalo que agregue videos cada 1 segundo
+    setTimeout(() => {
+        setInterval(toggleVideos, 2000);
+    }, 1000);
+});
+
+
+const ServicesInfowrapper = document.querySelectorAll('.Services-Infowrapper');
+const ServicesImgWrapper = document.querySelectorAll('.Services-imgWrapper');
+
+let options = { threshold: 1 };
+
+const handleIntersection = (entries) => {
+  entries.forEach(({ isIntersecting, target }) => {
+    let index = Array.from(ServicesInfowrapper).indexOf(target);
+    if (index !== -1) {
+      if (isIntersecting) {
+        ServicesImgWrapper[index].classList.add('IsVisible');
+      } else {
+        ServicesImgWrapper[index].classList.remove('IsVisible');
+      }
+    }
+  });
+};
+
+let observer = new IntersectionObserver(handleIntersection, options);
+
+ServicesInfowrapper.forEach(infowrapper => observer.observe(infowrapper));
+
+const Efecto = document.querySelector('.Efecto'); // Un solo elemento
+const EfectoMargin = document.querySelectorAll('.Efecto-margin');
+
+let Efectosoptions = { threshold: 0.5 };
+
+const EfecthandleIntersection = (entries) => {
+  entries.forEach(({ isIntersecting }) => {
+    if (isIntersecting) {
+      EfectoMargin.forEach((elemento) => {
+        elemento.classList.remove('IsInActive');
+        
+      });
+    }
+  });
+};
+
+let Efectosobserver = new IntersectionObserver(EfecthandleIntersection, Efectosoptions);
+
+// Observamos directamente el único elemento
+if (Efecto) {
+  Efectosobserver.observe(Efecto);
+}
+
