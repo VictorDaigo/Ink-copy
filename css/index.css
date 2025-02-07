@@ -247,7 +247,7 @@ top: -100vh;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
-  mask-image: url(../assets/image-from-rawpixel-id-15395508-png.png);
+  mask-image: url(../assets/ezgif-con\ loop.gif);
   mask-size: cover;
   mask-position: center;
   mask-repeat: no-repeat;
@@ -329,6 +329,7 @@ color: blueviolet;
   width: 100vw;
   display: flex;
   flex-flow: row nowrap;
+  left: 0;
 
 
 }
@@ -367,4 +368,72 @@ width: 100%;
 }
 .IsInActive{
 width: 0;
+}
+
+.Works{
+  background-color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+.Works-info{
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: repeat(2 , 1fr);
+  grid-auto-rows: min-content;
+}
+.Works-h2{
+  font-family: "Poppins", serif;
+font-size: 1.5rem;
+color: #8F1C1D;
+}
+.Works-h2-span{
+  position: relative;
+}
+.Works-h2-span::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #8F1C1D;
+  left: 0;
+  transition: width 0.5s ease-in-out;
+}
+.Works-h2-span.active::before {
+  width: 100%; /* Se expande cuando la clase 'active' se añade */
+}
+.Works-span{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 5rem;
+  color: black;
+  grid-row: 2/3;
+}
+.Works-p{
+  font-family: "Poppins", serif;
+  font-size: 1.4rem;
+  grid-row: span2;
+  color: black;
+}
+.WorkItem{
+  background-color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: start;
+
+}
+.WorkWrapper{
+  background-color: red;
+  width: 100%;
+  height: 130%;
+  transition: all 1s linear;
+  object-position: center;
+}
+.FinalWorkWrapper{
+
 }

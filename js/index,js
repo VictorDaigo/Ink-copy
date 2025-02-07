@@ -150,3 +150,29 @@ if (Efecto) {
   Efectosobserver.observe(Efecto);
 }
 
+const WorkWrappers = document.querySelectorAll('.WorkWrapper');
+let activeWrappers = new Set(); // Guardará los elementos visibles actualmente
+
+// Configuración del Intersection Observer
+let WorkOptions = { threshold: 0.5 }; // Se activa cuando el 50% del WorkWrapper sea visible
+
+const handleWorkIntersection = (entries) => {
+    entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) {
+            activeWrappers.add(target); // Añade el WorkWrapper activo
+        } else {
+            activeWrappers.delete(target); // Lo elimina si deja de ser visible
+            target.style.transform = "translateY(0%)"; // Vuelve a su posición original
+        }
+    });
+};
+
+let WorkObserver = new IntersectionObserver(handleWorkIntersection, WorkOptions);
+WorkWrappers.forEach(WorkWrapper => WorkObserver.observe(WorkWrapper));
+
+// Evento de scroll para activar el movimiento del WorkWrapper correspondiente
+window.addEventListener("wheel", () => {
+    activeWrappers.forEach(wrapper => {
+        wrapper.style.transform = "translateY(50%)";
+    });
+});
