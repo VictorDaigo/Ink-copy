@@ -127,17 +127,16 @@ let observer = new IntersectionObserver(handleIntersection, options);
 
 ServicesInfowrapper.forEach(infowrapper => observer.observe(infowrapper));
 
-const Efecto = document.querySelector('.Efecto'); // Un solo elemento
-const EfectoMargin = document.querySelectorAll('.Efecto-margin');
+const Efectos = document.querySelectorAll('.Efecto'); // Ahora seleccionamos todos los elementos con la clase .Efecto
 
 let Efectosoptions = { threshold: 0.5 };
 
 const EfecthandleIntersection = (entries) => {
-  entries.forEach(({ isIntersecting }) => {
+  entries.forEach(({ isIntersecting, target }) => {
     if (isIntersecting) {
+      const EfectoMargin = target.querySelectorAll('.Efecto-margin');
       EfectoMargin.forEach((elemento) => {
         elemento.classList.remove('IsInActive');
-        
       });
     }
   });
@@ -145,10 +144,11 @@ const EfecthandleIntersection = (entries) => {
 
 let Efectosobserver = new IntersectionObserver(EfecthandleIntersection, Efectosoptions);
 
-// Observamos directamente el único elemento
-if (Efecto) {
-  Efectosobserver.observe(Efecto);
-}
+// Observamos todos los elementos con la clase .Efecto
+Efectos.forEach((elemento) => {
+  Efectosobserver.observe(elemento);
+});
+
 
 const WorkWrappers = document.querySelectorAll('.WorkWrapper');
 let activeWrappers = new Set(); // Guardará los elementos visibles actualmente
@@ -173,6 +173,6 @@ WorkWrappers.forEach(WorkWrapper => WorkObserver.observe(WorkWrapper));
 // Evento de scroll para activar el movimiento del WorkWrapper correspondiente
 window.addEventListener("wheel", () => {
     activeWrappers.forEach(wrapper => {
-        wrapper.style.transform = "translateY(50%)";
+        wrapper.style.transform = "translateY(-90%)";
     });
 });

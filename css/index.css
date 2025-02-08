@@ -406,6 +406,9 @@ color: #8F1C1D;
 .Works-h2-span.active::before {
   width: 100%; /* Se expande cuando la clase 'active' se añade */
 }
+.Efecto-margin--black{
+  background-color: black;
+}
 .Works-span{
   font-family: "Playfair Display", serif;
   font-weight: 600;
@@ -430,10 +433,9 @@ color: #8F1C1D;
 .WorkWrapper{
   background-color: red;
   width: 100%;
-  height: 130%;
-  transition: all 1s linear;
+  height: 190%;
   object-position: center;
-}
-.FinalWorkWrapper{
+  transition: all 2s ease;
 
 }
+
