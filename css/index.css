@@ -58,6 +58,8 @@ body{
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  max-width: 1400px;
+  margin: auto;
   
   
 }
@@ -438,4 +440,81 @@ color: #8F1C1D;
   transition: all 2s ease;
 
 }
+.Team{
+  padding: 0 2rem;
+  position: relative;
+}
+.Team-info{
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: red;
+  justify-content: center;
+  align-items: start;
 
+}
+.Team-h2{
+  font-family: "Poppins", serif;
+  font-size: 1.5rem;
+  color: blueviolet;
+}
+.Team-span{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 3.5rem;
+}
+.Team-p{
+  font-family: "Poppins", serif;
+  font-size: 1.4rem;
+}
+.TeamGallery{
+  width: 100vw;
+  position: absolute;
+  height: 100vh;
+  bottom: 0;
+  right: -100vw;
+  background-color: blue;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding: 2rem;
+ 
+}
+.TeamGallery-li{
+  width: 20%;
+  min-height: 400px;
+  background-color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  
+}
+.TeamGallery-imgWrapper{
+  background-color: #ffda2a;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+}
+.TeamGallery-h3{
+  font-family: "Poppins", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.TeamGallery-span{
+  font-family: "Poppins", serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: center;
+}

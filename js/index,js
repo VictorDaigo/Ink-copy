@@ -176,3 +176,22 @@ window.addEventListener("wheel", () => {
         wrapper.style.transform = "translateY(-90%)";
     });
 });
+
+const TeamGallery = document.querySelector(`.TeamGallery`);
+
+if (TeamGallery) {
+    let Teamoptions = {
+        threshold: 0.5
+    };
+
+    let Teamobserver = new IntersectionObserver((entries) => {
+        let { isIntersecting, target } = entries[0];
+        if (isIntersecting) {
+            target.style.transform = `translateX(-100vw)`;
+        } else {
+          target.style.transform = `translateX(0)`;
+        }
+    }, Teamoptions);
+
+    Teamobserver.observe(TeamGallery);
+}
