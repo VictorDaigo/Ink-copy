@@ -58,7 +58,6 @@ body{
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  max-width: 1400px;
   margin: auto;
   
   
@@ -199,6 +198,7 @@ top: -100vh;
   grid-auto-rows: auto;
   color: white;
   padding: 0 2rem;
+  max-width: 1400px;
 
 }
 .AboutUs-h2{
@@ -289,7 +289,7 @@ top: -100vh;
 .Services-h3{
 font-family: "Poppins", serif;
 font-size: 1.5rem;
-color: blueviolet;
+color: #8a2be2;
 }
 
 .Services-sticky{
@@ -401,7 +401,7 @@ color: #8F1C1D;
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: #8F1C1D;
+  background-color: rgb(143, 28, 29);
   left: 0;
   transition: width 0.5s ease-in-out;
 }
@@ -443,15 +443,21 @@ color: #8F1C1D;
 .Team{
   padding: 0 2rem;
   position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 .Team-info{
   width: 100%;
+  max-width: 1400px;
   color: white;
   display: flex;
   flex-flow: column nowrap;
-  background-color: red;
   justify-content: center;
   align-items: start;
+  transition: all 1s ease-in-out;
+
 
 }
 .Team-h2{
@@ -474,13 +480,13 @@ color: #8F1C1D;
   height: 100vh;
   bottom: 0;
   right: -100vw;
-  background-color: blue;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   color: black;
   padding: 2rem;
+  transition: all 1s ease-in-out;
  
 }
 .TeamGallery-li{
@@ -505,7 +511,7 @@ color: #8F1C1D;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-
+  overflow: hidden;
 }
 .TeamGallery-h3{
   font-family: "Poppins", serif;

@@ -2,6 +2,8 @@ const BoxWrapper = document.querySelector(`.Box-wrapper`);
 const imgWrapper = document.querySelectorAll(`.img-wrapper`);
 const imgWrappeBottom = document.querySelector(`.img-wrapper--bottom`);
 const box = document.querySelectorAll('.box')
+const TeamInfo = document.querySelector(`.Team-info`)
+const TeamGallery = document.querySelector(`.TeamGallery`)
 BoxWrapper.style.height = `calc(100% * ${box.length})`
 box.forEach((_,i)=>{
   box[i].style.height = `calc(100% / ${box.length})`
@@ -9,27 +11,26 @@ box.forEach((_,i)=>{
 let anchoBox = 100 / box.length
 let esScrolear = 0;
 let imgScroll = esScrolear - 1
-let mouseX = 0; // Guardar posición X del mouse
-let mouseY = 0; // Guardar posición Y del mouse
+let mouseX = 0; 
+let mouseY = 0;
 
-// Dimensiones del imgWrapper (fijas según tu CSS)
+
 const imgWidth = 200; // Ancho del img-wrapper
 const imgHeight = 300; // Altura del img-wrapper
 
-// Evento `wheel`
+
 window.addEventListener(`wheel`, (e) => {
     let { deltaY } = e;
 
     if (deltaY > 0) {
         esScrolear++;
-        if (esScrolear > box.length - 1) {
-            esScrolear = box.length - 1;
-        }
+        //if (esScrolear > box.length - 1) {
+            //esScrolear = box.length - 1;
+        //}
 
         BoxWrapper.style.transform = `translateY(-${esScrolear * anchoBox}%)`;
         imgWrapper.forEach((_, i) => {
-            // Aplicar solo la transformación del scroll
-            const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`; // Aplicar scroll
+            const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`;
             const mouseTransform = `translate(${mouseX - imgWidth / 2}px, ${mouseY - imgHeight / 2}px)`; // Mantener el efecto del mouse centrado
             imgWrapper[i].style.transform = `${scrollTransform} ${mouseTransform}`;
         });
@@ -41,12 +42,33 @@ window.addEventListener(`wheel`, (e) => {
 
         BoxWrapper.style.transform = `translateY(-${esScrolear * anchoBox}%)`;
         imgWrapper.forEach((_, i) => {
-            // Aplicar solo la transformación del scroll
-            const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`; // Aplicar scroll
+            const scrollTransform = `translateY(${(esScrolear-1) * 100}vh)`; 
             const mouseTransform = `translate(${mouseX - imgWidth / 2}px, ${mouseY - imgHeight / 2}px)`; // Mantener el efecto del mouse centrado
             imgWrapper[i].style.transform = `${scrollTransform} ${mouseTransform}`;
         });
     }
+    if (esScrolear >= 13) {
+      BoxWrapper.style.transform = `translateY(-${13 * anchoBox}%)`;
+
+
+    } else {
+      BoxWrapper.style.transform = `translateY(-${esScrolear * anchoBox}%)`;
+
+    }
+    if (esScrolear >= 14) {
+      let escalar = (14 / esScrolear) * 0.6; 
+      let opacity = Math.max(0, 1 - (esScrolear - 14) * 0.2);
+      let galleryOffset = Math.min(100, (esScrolear - 14) * 20); // Entra completamente en 5 scrolls
+      TeamGallery.style.right = `-${100 - galleryOffset}vw`;
+      TeamInfo.style.transform = `scale(${escalar})`;
+      TeamInfo.style.opacity = opacity;
+
+
+    }else{
+      TeamInfo.style.transform = `scale(1)`;
+
+    }
+    
     console.log(esScrolear);
 });
 
@@ -176,22 +198,3 @@ window.addEventListener("wheel", () => {
         wrapper.style.transform = "translateY(-90%)";
     });
 });
-
-const TeamGallery = document.querySelector(`.TeamGallery`);
-
-if (TeamGallery) {
-    let Teamoptions = {
-        threshold: 0.5
-    };
-
-    let Teamobserver = new IntersectionObserver((entries) => {
-        let { isIntersecting, target } = entries[0];
-        if (isIntersecting) {
-            target.style.transform = `translateX(-100vw)`;
-        } else {
-          target.style.transform = `translateX(0)`;
-        }
-    }, Teamoptions);
-
-    Teamobserver.observe(TeamGallery);
-}
